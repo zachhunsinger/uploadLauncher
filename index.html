@@ -3,7 +3,7 @@
   <head>
     <title>Launch Upload App</title>
     <script>
-      const appUrl = "https://apps.powerapps.com/play/appId=8e7e0962-7fd3-4f3f-b1bb-2d20d07db53e&tenantId=28e7d186-bd09-4557-b590-64e92c1c14b8&hideNavBar=true";
+      const appUrl = "https://apps.powerapps.com/play/appId=8e7e0962-7fd3-4f3f-b1bb-2d20d07db53e&tenantId=28e7d186-bd09-4557-b590-64e92c1c14b8";
 
       function launchApp() {
         const win = window.open(
@@ -11,7 +11,24 @@
           "UploadPDFApp",
           "width=300,height=225,top=0,left=0,resizable=no"
         );
+
         if (win) {
+          const attemptHideHeader = () => {
+            try {
+              const header = win.document.getElementById("shellHeaderContainer");
+              if (header) {
+                header.style.display = "none";
+                console.log("💣 Purple bar annihilated.");
+              } else {
+                setTimeout(attemptHideHeader, 200); // Try again until it's ready
+              }
+            } catch (err) {
+              // Cross-origin policy may block this
+              console.warn("🚫 Can't access window DOM directly (cross-origin)");
+            }
+          };
+
+          setTimeout(attemptHideHeader, 1000);
           setTimeout(() => window.close(), 500);
         }
       }
