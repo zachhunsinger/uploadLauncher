@@ -4,12 +4,15 @@
     <title>Launch Upload App</title>
     <script>
       function launchApp() {
-        window.open(
-          "https://apps.powerapps.com/play/e/default-28e7d186-bd09-4557-b590-64e92c1c14b8/a/8e7e0962-7fd3-4f3f-b1bb-2d20d07db53e?tenantId=28e7d186-bd09-4557-b590-64e92c1c14b8&hint=d1f00dc0-534b-405a-85ec-4429b8a84a24&sourcetime=1744295230308",
+        const appUrl = "https://apps.powerapps.com/play/e/default-28e7d186-bd09-4557-b590-64e92c1c14b8/a/8e7e0962-7fd3-4f3f-b1bb-2d20d07db53e?tenantId=28e7d186-bd09-4557-b590-64e92c1c14b8&hint=d1f00dc0-534b-405a-85ec-4429b8a84a24&sourcetime=1744295230308&hideNavBar=true";
+
+        const newWindow = window.open(
+          appUrl,
           "UploadPDFApp",
-          "width=400,height=300,top=100,left=100,resizable=no"
+          "width=300,height=225,top=0,left=0,resizable=no"
         );
-        window.close();
+
+        setTimeout(() => window.close(), 500); // Close after 500ms
       }
     </script>
   </head>
