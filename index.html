@@ -4,15 +4,19 @@
     <title>Launch Upload App</title>
     <script>
       function launchApp() {
-        const appUrl = "https://apps.powerapps.com/play/e/default-28e7d186-bd09-4557-b590-64e92c1c14b8/a/8e7e0962-7fd3-4f3f-b1bb-2d20d07db53e?tenantId=28e7d186-bd09-4557-b590-64e92c1c14b8&hideNavBar=true";
+        const appUrl = "https://apps.powerapps.com/play/appId=8e7e0962-7fd3-4f3f-b1bb-2d20d07db53e&tenantId=28e7d186-bd09-4557-b590-64e92c1c14b8&hideNavBar=true";
 
-        const newWindow = window.open(
+        const win = window.open(
           appUrl,
-          "ADD PARTS LIST",
+          "ADD_PARTS_LIST",
           "width=400,height=300,top=0,left=0,resizable=no"
         );
 
-        setTimeout(() => window.close(), 500); // Close after 500ms
+        if (win) {
+          setTimeout(() => window.close(), 500);
+        } else {
+          alert("Popup was blocked. Please allow popups and try again.");
+        }
       }
     </script>
   </head>
@@ -21,6 +25,6 @@
     <button onclick="launchApp()" style="padding: 12px 24px; font-size: 18px; border-radius: 8px; cursor: pointer;">
       🚀 Launch Upload App
     </button>
-    <p>If your popup was blocked, allow it and try again.</p>
+    <p>If your popup was blocked, allow it and click again.</p>
   </body>
 </html>
